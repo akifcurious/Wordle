@@ -1,0 +1,161 @@
+import { LightningElement } from "lwc";
+
+export default class KeyboardInitializer extends LightningElement {}
+export const initialKeyboardArray = [
+  {
+    keyboardIndex: 0,
+    keyboardLetter: "Q",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 1,
+    keyboardLetter: "W",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 2,
+    keyboardLetter: "E",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 3,
+    keyboardLetter: "R",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 4,
+    keyboardLetter: "T",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 5,
+    keyboardLetter: "Y",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 6,
+    keyboardLetter: "U",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 7,
+    keyboardLetter: "I",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 8,
+    keyboardLetter: "O",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 9,
+    keyboardLetter: "P",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: true,
+  },
+  {
+    keyboardIndex: 10,
+    keyboardLetter: "A",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 11,
+    keyboardLetter: "S",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 12,
+    keyboardLetter: "D",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 13,
+    keyboardLetter: "F",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 14,
+    keyboardLetter: "G",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 15,
+    keyboardLetter: "H",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 16,
+    keyboardLetter: "J",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 17,
+    keyboardLetter: "K",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 18,
+    keyboardLetter: "L",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: true,
+  },
+  {
+    keyboardIndex: 19,
+    keyboardLetter: "Z",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 20,
+    keyboardLetter: "X",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 21,
+    keyboardLetter: "C",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 22,
+    keyboardLetter: "V",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 23,
+    keyboardLetter: "B",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 24,
+    keyboardLetter: "N",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+  {
+    keyboardIndex: 25,
+    keyboardLetter: "M",
+    keyboardColor: "keyboardBoxGray",
+    keyboardNewLine: false,
+  },
+];

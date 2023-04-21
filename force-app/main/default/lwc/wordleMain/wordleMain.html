@@ -1,0 +1,218 @@
+<template>
+  <div class="slds-grid slds-grid_align-center">
+    <div class="slds-size_x-large">
+      <lightning-card title={attemptCounterLabel}>
+        <div slot="actions" class="slds-grid">
+          <lightning-button-group>
+            <lightning-button
+              label={keyboardShowHideButtonLabel}
+              onclick={handleShowHideKeyboard}
+            ></lightning-button>
+            <lightning-button
+              label={revealHideButton}
+              onclick={handleShowAnswer}
+            ></lightning-button>
+            <!-- onclick={handleRevealButton} -->
+            <lightning-button
+              label="Restart"
+              variant="destructive"
+              onclick={handleResetButton}
+            ></lightning-button>
+          </lightning-button-group>
+        </div>
+        <template if:true={showModal}>
+          <section
+            role="dialog"
+            tabindex="-1"
+            aria-labelledby="modal-heading-01"
+            aria-modal="true"
+            aria-describedby="modal-content-id-1"
+            class="slds-modal slds-fade-in-open"
+          >
+            <div class="slds-modal__container">
+              <header class="slds-modal__header">
+                <h2 id="modal-heading-01" class="slds-text-heading_medium">
+                  Answer: {modalAnswer}
+                </h2>
+              </header>
+
+              <footer class="slds-modal__footer">
+                <button
+                  class="slds-button slds-button_neutral"
+                  onclick={handleClose}
+                >
+                  Close
+                </button>
+              </footer>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <div class="slds-m-horizontal_none slds-p-around_none">
+          <lightning-layout>
+            <lightning-layout-item alignment-bump="left">
+              <div
+                if:true={isAnswerRevealed}
+                class="slds-text-heading_medium custom-box slds-box slds-var-p-around_x-small slds-text-align_center"
+              >
+                Answer: {randomWord}
+              </div>
+            </lightning-layout-item>
+          </lightning-layout>
+        </div>
+        <div><br /></div>
+
+        <lightning-layout multiple-rows>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <div><br /></div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <div
+                  class="slds-text-heading_large slds-grid slds-grid_align-center"
+                >
+                  <div class="wordleTitle">&nbsp;Wordle&nbsp;</div>
+                  <lightning-icon
+                    icon-name="utility:anywhere_chat"
+                    title="Wordle"
+                    variant={iconVariant}
+                  ></lightning-icon>
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <div><br /></div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="12">
+                <div
+                  if:true={isCompleted}
+                  class="sldx-box slds-theme_success slds-var-p-around_x-small"
+                >
+                  <p class="slds-text-heading_large slds-text-align_center">
+                    Congratulations!
+                  </p>
+                </div>
+                <div if:false={isCompleted}><br /></div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout>
+              <lightning-layout-item if:true={isKeyboardVisible} size="12">
+                <div class="keyboardContainer">
+                  <template for:each={keyboardArray} for:item="keyboardKey">
+                    <span
+                      class="alignmentClass"
+                      key={keyboardKey.keyboardIndex}
+                    >
+                      <div class={keyboardKey.keyboardColor}>
+                        {keyboardKey.keyboardLetter}
+                      </div>
+                      <br if:true={keyboardKey.keyboardNewLine} />
+                    </span>
+                  </template>
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <div><br /></div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <lightning-input
+                  type="text"
+                  class="responseInputBox"
+                  label="Enter your guess"
+                  variant="label-hidden"
+                  value={InputTextValue}
+                  max-length="5"
+                  onkeypress={handleEnter}
+                  onchange={handleTextInput}
+                ></lightning-input>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <lightning-button
+                  type="submit"
+                  variant="brand"
+                  name="submit"
+                  label="Submit"
+                  onclick={handleSubmit}
+                  stretch
+                ></lightning-button>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <div
+                  if:true={isInvalidCharacter}
+                  class="sldx-box slds-theme_shade slds-theme_alert-texture"
+                >
+                  <p class="slds-text-color_error">{invalidCharacterWarning}</p>
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+          <lightning-layout-item size="12">
+            <lightning-layout class="slds-grid_align-center">
+              <lightning-layout-item size="6">
+                <div
+                  class="slds-text-heading_large slds-grid slds-grid_align-center"
+                >
+                  <ul class="slds-m-around_medium">
+                    <template for:each={resultsMain} for:item="result">
+                      <li key={result.index}>
+                        <lightning-layout>
+                          <template for:each={result} for:item="submission">
+                            <lightning-layout-item key={submission.index}>
+                              <div>
+                                <div class={submission.variant}>
+                                  {submission.letter}
+                                </div>
+                              </div>
+                            </lightning-layout-item>
+                          </template>
+                        </lightning-layout>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+              </lightning-layout-item>
+            </lightning-layout>
+          </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+          <lightning-layout-item>
+            <div><br /><br /><br /></div>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-card>
+    </div>
+  </div>
+</template>
