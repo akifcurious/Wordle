@@ -7,10 +7,17 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 const INVALID_CHARACTER_WARNING = "Invalid character. Only letters.(A-Z)";
 const INVALID_CHARACTER_TOAST_MESSAGE =
   "Word not found. Word must be 5 letters long and only contain letters. (a-z)";
+<<<<<<< HEAD
 const IS_DEVLOG_ACTIVE = true; // using this to turn off console logs for production (not using permission sets in order to keep everything in LWC)
 
 export default class WordleMain extends LightningElement {
   @track randomWord; // the random word that is chosen from the dictionary
+=======
+const IS_DEVLOG_ACTIVE = true; // turn on/off console logs (not using permission sets in order to keep everything in LWC)
+
+export default class WordleMain extends LightningElement {
+  @track randomWord; // the random word that is chosen from the word list
+>>>>>>> b4c1d56 (initial commit)
   lettersOfRandomWord;
   lettersOfSubmittedWord;
   resultArray; // hold the result array for each submission
